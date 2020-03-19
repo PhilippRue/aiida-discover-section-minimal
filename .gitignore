@@ -1,0 +1,8 @@
+*.swp
+*.swo
+.DS_Store
+*.pyc
+*.egg-info
+.ipynb_checkpoints/
+.vscode
+venv

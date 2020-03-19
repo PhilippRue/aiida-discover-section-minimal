@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  bokeh:
+    image: aiida-test
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '/Users/ruess/sourcecodes/aiida/JuDiT_webinterface/venv/.aiida/repository/judit:/app/.aiida/repository/aiida-test/'
+      #- '/Local/ruess/.aiida/repository/judit-test/:/app/.aiida/repository/judit/'
+    ports:
+      - "5006:5006"
