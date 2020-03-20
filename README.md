@@ -36,3 +36,9 @@ docker-compose up
 ```
 
 This will do the full installation including preparing the test data in the database.
+
+Alternatively use the `start_docker.sh` script.
+
+## Running with podman
+
+Similar to docker we just run `start_podman.sh`.

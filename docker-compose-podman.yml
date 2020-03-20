@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  aiida-test-discover-podman:
+    image: aiida-test-podman
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile-podman
+    volumes:
+      - '/Local/ruess/.aiida/repository/judit-test/:/app/.aiida/repository/judit/'
+    ports:
+      - "5006:5006"
+    network_mode: "host"

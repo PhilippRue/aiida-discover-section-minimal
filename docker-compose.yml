@@ -1,15 +1,13 @@
 version: '2'
 
 services:
-  bokeh:
+  aiida-test-discover-docker:
     image: aiida-test
     restart: always
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
-      #- '/Users/ruess/sourcecodes/aiida/JuDiT_webinterface/venv/.aiida/repository/judit:/app/.aiida/repository/aiida-test/'
-      - '/Local/ruess/.aiida/repository/judit-test/:/app/.aiida/repository/aiida-test/'
+      - '/Users/ruess/sourcecodes/aiida/JuDiT_webinterface/venv/.aiida/repository/judit:/app/.aiida/repository/aiida-test/'
     ports:
       - "5006:5006"
-    network_mode: "host"
