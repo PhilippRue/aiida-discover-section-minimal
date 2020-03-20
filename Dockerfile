@@ -21,16 +21,19 @@ ENV default_user_email p.ruessmann@fz-juelich.de
 # set workdir in container
 WORKDIR /app
 
+# install dependencies should be done here to use caching 
+COPY test-app/requirements.txt .
+RUN pip3 install -r requirements.txt
+
 # copy files and directories
 COPY test-app ./test-app
-COPY prepare_db_connection.sh ./
+COPY prepare* ./
+COPY data ./data
 
-# install dependencies
-RUN pip3 install -e test-app
+# prepare aiida config file and test data
 RUN reentry scan -r aiida
-
-# prepare aiida config file
 RUN ./prepare_db_connection.sh
+RUN verdi import data/KkrCalculation-nodes-53acc7b8a54857077284f1114ca72811.tar.gz
 
 # finally copy serve-app script 
 COPY ./serve-app.sh /opt/
